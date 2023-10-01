@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1.0"
+    />
+    <title>Document</title>
+    <link
+      rel="stylesheet"
+      href="/css/style2.css"
+    />
+  </head>
+  <body>
+    <h1>Hello FSW2</h1>
+    <% if (message != '') { %>
+    <div
+      class="alert <%= (message == 'Ditambah' ? 'alert-success': 'alert-dark') %>"
+      role="alert"
+    >
+      Data Berhasil <%= message %>
+    </div>
+    <%} %>
+    <table>
+      <th>id</th>
+      <th>nama</th>
+      <th>harga</th>
+      <th>rating</th>
+      <th>aksi</th>
+      <% tours.map((tour) => { %>
+      <tr>
+        <td><%= tour.id %></td>
+        <td><%= tour.name %></td>
+        <td><%= tour.price %></td>
+        <td><%= tour.rating %></td>
+        <td>
+          <a
+            href="/dashboard/edit/<%= tour.id %>"
+          >
+            <button>edit</button>
+          </a>
+          <form
+            action="/tours/delete/<%= tour.id %>"
+            method="post"
+          >
+            <button>hapus</button>
+          </form>
+        </td>
+      </tr>
+      <% }) %>
+    </table>
+    <a href="/dashboard/create">
+      <button>tambah tour baru</button>
+    </a>
+  </body>
+</html>

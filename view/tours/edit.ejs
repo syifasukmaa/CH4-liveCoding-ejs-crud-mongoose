@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1.0"
+    />
+    <title>Document</title>
+  </head>
+  <body>
+    <h3>Edit Data Tour : <%= tour.name %></h3>
+    <form
+      method="POST"
+      action="/tours/update/<%= tour.id %>"
+    >
+      <label for="">name</label>
+      <input
+        type="text"
+        name="name"
+        value="<%= tour.name %>"
+      /><br />
+      <label for="">price</label>
+      <input
+        type="text"
+        name="price"
+        value="<%= tour.price %>"
+      /><br />
+      <label for="">quantity</label>
+      <input
+        type="text"
+        name="rating"
+        value="<%= tour.rating %>"
+      /><br />
+      <button type="submit">Edit</button>
+    </form>
+  </body>
+</html>
