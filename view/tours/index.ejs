@@ -14,14 +14,28 @@
   </head>
   <body>
     <h1>Hello FSW2</h1>
+    <p>data ada <%= tours.length %></p>
+  
+    <form>
+      <input type="text" name="name" placeholder="search tour name"><br>
+
+      <p>filter by price</p>
+      <input value="100" type="radio" class="btn-check" name="price" id="small" autocomplete="off">
+      <label class="btn btn-outline-primary me-2" for="small">diatas Rp.100</label><br>
+
+      <input value="10000" type="radio" class="btn-check" name="price" id="small" autocomplete="off">
+      <label class="btn btn-outline-primary me-2" for="small">diatas Rp.10000</label><br>
+
+      <input value="100000" type="radio" class="btn-check" name="price" id="small" autocomplete="off">
+      <label class="btn btn-outline-primary me-2" for="small">diatas Rp.100000</label><br>
+
+      <button type="submit">search</button>
+    </form>    
     <% if (message != '') { %>
-    <div
-      class="alert <%= (message == 'Ditambah' ? 'alert-success': 'alert-dark') %>"
-      role="alert"
-    >
-      Data Berhasil <%= message %>
-    </div>
-    <%} %>
+      <div class="alert <%= (message == 'Ditambah' ? "alert-success" :"alert-dark") %>" role="alert">
+        Data Berhasil <%= message %>
+      </div>
+    <% } %>
     <table>
       <th>id</th>
       <th>nama</th>
@@ -35,18 +49,17 @@
         <td><%= tour.price %></td>
         <td><%= tour.rating %></td>
         <td>
-          <a
-            href="/dashboard/edit/<%= tour.id %>"
-          >
-            <button>edit</button>
+          <a href="/dashboard/edit/<%= tour.id %>">
+              <button>
+                  edit
+              </button>
           </a>
-          <form
-            action="/tours/delete/<%= tour.id %>"
-            method="post"
-          >
-            <button>hapus</button>
+          <form action="/tours/delete/<%= tour.id %>" method="post">
+              <button>
+                  hapus
+              </button>
           </form>
-        </td>
+      </td>
       </tr>
       <% }) %>
     </table>

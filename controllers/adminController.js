@@ -3,7 +3,22 @@ const Tour = require(".././models/tourModel")
 
 const getAllTours = async (req, res) => {
   try {
-    const tours = await Tour.find()
+    console.log(req.query)
+    const { price, name, rating } = req.query
+
+    const condition = {}
+    if (price)
+      condition.price = { $gt: req.query.price }
+    if (name)
+      condition.name = {
+        $regex: ".*" + name.toLowerCase() + ".*",
+      }
+    if (rating)
+      condition.rating = { $gt: req.query.rating }
+
+    const tours = await Tour.find().where(
+      condition
+    )
     res.render("tours/index.ejs", {
       tours,
       message: req.flash("message", ""),
